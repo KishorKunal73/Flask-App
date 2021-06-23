@@ -1,0 +1,172 @@
+{% extends "layout.html" %} {% block body %}
+
+<style>
+  /* Style the body */
+  .respo {
+    font-family: Arial;
+    margin-top: 125px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  /* Column container */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* Create two unequal columns that sits next to each other */
+  /* Sidebar/left column */
+  .side {
+    flex: 30%;
+    background-color: #f1f1f1;
+    padding: 20px;
+  }
+
+  /* Main column */
+  .main {
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+  }
+
+  /* Fake image, just for this example */
+  .fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 700px) {
+    .row,
+    .navbar {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<style>
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid rgb(150, 110, 110);
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 16px;
+  }
+</style>
+
+
+<style>
+	.button {
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: #3f9c75;
+	  border: none;
+	  color: #FFFFFF;
+	  text-align: center;
+	  font-size: 20px;
+	  padding: 20px;
+	 
+	  transition: all 0.5s;
+	  cursor: pointer;
+	  margin: 5px;
+	}
+	
+	.button span {
+	  cursor: pointer;
+	  display: inline-block;
+	  position: relative;
+	  transition: 0.5s;
+	}
+	
+	.button span:after {
+	  content: '\00bb';
+	  position: absolute;
+	  opacity: 0;
+	  top: 0;
+	  right: -20px;
+	  transition: 0.5s;
+	}
+	
+	.button:hover span {
+	  padding-right: 25px;
+	}
+	
+	.button:hover span:after {
+	  opacity: 1;
+	  right: 0;
+	}
+	</style>
+	<style>
+		#more {display: none;}
+		</style>
+
+<div class="respo">
+  <!-- The flexible grid (content) -->
+  <div class="row">
+    <div class="side">
+      <h3>Chapters</h3>
+	  <button class="button" onclick="document.location='/notes'"  style="vertical-align:middle"><span>Sets </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Time and Work </span></button>
+	
+	  <button class="button" style="vertical-align:middle"><span>compound Interest, Popn Growth & Comp Dep </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Mesnuration </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Profit & Loss </span></button>
+	  <button class="button" style="vertical-align:middle"><span>HCF and LCM </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Simplification of Algebric Fraction</span></button>
+	  <button class="button" style="vertical-align:middle"><span>Indices, Roots and Surds </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Verbal problem</span></button>
+	  <button class="button" style="vertical-align:middle"><span>Area of Triangle and Quadrilateral</span></button>
+	  <button class="button" style="vertical-align:middle"><span>Hover </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Hover </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Hover </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Hover </span></button>
+	  <button class="button" style="vertical-align:middle"><span>Hover </span></button>
+
+	  <button class="button" style="vertical-align:middle"><span>Hover </span></button>
+    </div>
+    <div class="main">
+		<h4>Latest Updated Notes</h4>
+
+		<!-- Fetch these using for loop and page-intion -->
+		<a href="default.asp">
+		<h2>Chapter Name</h2>
+		</a>
+      <h5>Description of notes in one line</h5>
+      <div class="fakeimg" style="height: 200px">
+		<a href="default.asp">
+		<img src="paris.jpg" alt="banner of note">
+	</a>
+
+	</div>
+      <p>
+        summary of notes
+      </p>
+      <br />
+	  <!-- ending here -->
+	  <a href="default.asp">
+		<h2>Chapter Name</h2>
+		</a>
+      <h5>Description of notes in one line</h5>
+      <div class="fakeimg" style="height: 200px">
+		<a href="default.asp">
+		<img src="paris.jpg" alt="banner of note">
+	</a>
+
+	</div>
+      <p>
+        summary of notes
+      </p>
+      <br />
+      
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+{% block body %}
+  
+
+  <script
+    src="http://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js">
+  </script>
+ 
+  <style>
+      .whole{
+          margin-top: 150px;
+          width: 100%;
+      }
+      
+      .heading{
+
+        text-align: center;
+        align-items:column;
+ 
+      }
+      
+      #canvas_container {
+          width: 60%;
+            
+
+        margin: auto;
+  
+  
+
+
+
+          height: 450px;
+          overflow: auto;
+          
+      }
+ 
+      #canvas_container {
+        background: #333;
+        text-align: center;
+        border: solid 3px;
+      }
+
+      .button-control{
+          margin: auto;
+          width: 50%;
+      }
+
+      .dbtn {
+  background-color: rgb(184, 80, 20);
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  align-self: auto;
+      }
+
+
+      @media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  #canvas_container {
+    width: 90%;
+  }
+      }
+  </style>
+
+    <div class="whole">
+        <div class="heading">
+            <h4>"Title of Notes"</h4>
+            <button class="dbtn"><i class="fa fa-download"></i> Download</button>
+        </div>
+      
+     <div id="my_pdf_viewer">
+        
+        <div id="canvas_container">
+           
+            <canvas id="pdf_renderer"></canvas>
+        </div>
+        <div class="button-control">
+        <div id="navigation_controls">
+            <button id="go_previous">Previous</button>
+            <input id="current_page" value="1" type="number"/>
+            <button id="go_next">Next</button>
+        </div>
+ 
+        <div id="zoom_controls">  
+            <button id="zoom_in">Zoom in +</button>
+            <button id="zoom_out">Zoom out -</button>
+        </div>
+
+        
+
+    </div>
+
+    </div>
+</div>
+ 
+    <script>
+        var myState = {
+            pdf: null,
+            currentPage: 1,
+            zoom: 1
+        }
+      
+        pdfjsLib.getDocument("{{ url_for('static', filename='mycontent/dummypdf.pdf')}}").then((pdf) => {
+      
+            myState.pdf = pdf;
+            render();
+ 
+        });
+ 
+        function render() {
+            myState.pdf.getPage(myState.currentPage).then((page) => {
+          
+                var canvas = document.getElementById("pdf_renderer");
+                var ctx = canvas.getContext('2d');
+      
+                var viewport = page.getViewport(myState.zoom);
+ 
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+          
+                page.render({
+                    canvasContext: ctx,
+                    viewport: viewport
+                });
+            });
+        }
+ 
+        document.getElementById('go_previous').addEventListener('click', (e) => {
+            if(myState.pdf == null || myState.currentPage == 1) 
+              return;
+            myState.currentPage -= 1;
+            document.getElementById("current_page").value = myState.currentPage;
+            render();
+        });
+ 
+        document.getElementById('go_next').addEventListener('click', (e) => {
+            if(myState.pdf == null || myState.currentPage > myState.pdf._pdfInfo.numPages) 
+               return;
+            myState.currentPage += 1;
+            document.getElementById("current_page").value = myState.currentPage;
+            render();
+        });
+ 
+        document.getElementById('current_page').addEventListener('keypress', (e) => {
+            if(myState.pdf == null) return;
+          
+            // Get key code
+            var code = (e.keyCode ? e.keyCode : e.which);
+          
+            // If key code matches that of the Enter key
+            if(code == 13) {
+                var desiredPage = 
+                document.getElementById('current_page').valueAsNumber;
+                                  
+                if(desiredPage >= 1 && desiredPage <= myState.pdf._pdfInfo.numPages) {
+                    myState.currentPage = desiredPage;
+                    document.getElementById("current_page").value = desiredPage;
+                    render();
+                }
+            }
+        });
+ 
+        document.getElementById('zoom_in').addEventListener('click', (e) => {
+            if(myState.pdf == null) return;
+            myState.zoom += 0.5;
+            render();
+        });
+ 
+        document.getElementById('zoom_out').addEventListener('click', (e) => {
+            if(myState.pdf == null) return;
+            myState.zoom -= 0.5;
+            render();
+        });
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<style>
+
+.containerup{
+
+	padding-top: 145px;
+	padding-left: 25%;
+	padding-right: 25%;
+	margin-bottom: 20px;
+	
+}
+
+.qupp{
+	margin: auto;
+}
+
+
+
+</style>
+
+
+
+
+
+<div class="containerup">
+	<h4>Please feel free to ask us any sub-related questions.</h4>
+	<p>Here you can ask us any sub-related question. We will post your answer as soon as possible. You will get a mail with a link of your answer whenever your question gets solved</p>
+	<form class="qupp" action="/uploadquestion" method="POST" enctype="multipart/form-data">
+		<label for="name">Full Name:</label><br>
+		<input type="text" id="name" name="name" placeholder="Name" required data-validation-required-message="Please enter your full name."><br>
+		<label for="email">Email Address:</label><br>
+		<input type="text" id="email" name="email" placeholder="Email Address" required data-validation-required-message="Please enter your email address."><br><br>
+		<label for="question">Question</label>
+		<textarea rows="5" class="form-control" placeholder="Enter your question" name = "question" id="question" required data-validation-required-message="Please ask your question"></textarea>
+
+		
+
+		<p>Click on the "Choose File" button to upload your question.</p>
+
+		
+		  <input type="file" id="myFile" name="file" accept="image/" multiple>
+		 
+		
+
+		<input type="submit" value="Submit">
+	  </form> 
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

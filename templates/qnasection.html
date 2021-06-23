@@ -1,0 +1,197 @@
+{% extends "layout.html" %} 
+{% block body %}
+
+<style>
+  
+
+  .right-side{
+      flex:20%;
+      padding-top: 140px;
+      float: right;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  form.example input[type="text"] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
+
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #a85510;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+  }
+
+  form.example button:hover {
+    background: #774709;
+  }
+
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+</style>
+
+<style>
+  .ubutton {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+
+  .ubutton:hover {
+    background-color: #3e8e41;
+  }
+
+  .ubutton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+</style>
+
+<style>
+    .row{
+       margin-top: 130px;
+       margin-left: 10px;
+    }
+    
+    /* Create three equal columns that floats next to each other */
+    .right-column {
+    float:right;
+      width: 20%;
+      padding: 15px;
+    
+    }
+
+    .middle-column {
+    
+      width: 60%;
+      padding: 15px;
+     
+    }
+    .left-column {
+     float:left;
+      width: 20%;
+      padding-left: 15px;
+  
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+        .left-column {
+        width: 100%;
+      }
+      .middle-column {
+        width: 100%;
+      }
+      .right-column {
+        width: 100%;
+      }
+    }
+    </style>
+
+
+
+
+
+<div class="row">
+    <!-- right -->
+    <div class="right-column">
+        
+        <div>
+            <h4 class="text-uppercase mb-4">Follow Us</h4>
+            <a class="btn btn-outline-light btn-social mx-1" style="background-color:#3b5998;" href="{{params['fb_url']}}" target="_blank"
+              ><i class="fab fa-fw fa-facebook-f"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1"  style="background-color:#37a3be;" href="{{params['tw_url']}}" target="_blank"
+              ><i class="fab fa-fw fa-twitter"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1" style="background-color:#ee6e58;" href="{{params['ins_url']}}" target="_blank"
+              ><i class="fab fa-fw fa-instagram"></i
+            ></a>
+            <a class="btn btn-outline-light btn-social mx-1"   style="background-color:#57bcce;" href="#!"
+              ><i class="fab fa-fw fa-telegram"></i
+            ></a>
+          </div>
+
+
+
+    </div>
+    <!-- middle -->
+    <div class="middle-column" >
+        <form class="example" action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search" />
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+      
+          <hr />
+          <div class="askq">
+            <h4>Can't find your answer</h4>
+            <h6>Don't worry we are here to help you!</h6>
+            <p>
+              Just take picture of your Questoin and upload it. we will be very
+              delighted to help you. <br />we will try to post answer of your question
+              in very simple and explainable manner as soon as possible.
+            </p>
+            <button class="ubutton" onclick="document.location='/upquestion'"  target="_blank">
+              Click here to upload your Question
+            </button>
+            <hr>
+          </div>
+          
+          {% for qna in qnas %}
+        
+          <div class="qna">
+            
+              <p>Asked by: {{qna.name}}</p>
+              <a href = "/qna/{{qna.slug}}">
+              <h4>{{qna.question}}</h4></a>
+              
+              
+              <p>{{qna.answer[0:143]}}...</p>
+              <button class="button" onclick="document.location='/qna/{{qna.slug}}'"  target="_blank">Read More</button>
+              
+          </div>
+        
+          {% endfor %}
+
+      
+      
+    </div>
+    <!-- left -->
+    <div class="left-column">
+        
+    </div>
+  </div>
+{% endblock %}

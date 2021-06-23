@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<style>
+
+.containerup{
+
+	padding-top: 145px;
+	padding-left: 25%;
+	padding-right: 25%;
+	margin-bottom: 20px;
+	
+}
+
+.qupp{
+	margin: auto;
+}
+
+
+.buttonlp {
+  background-color: #488c91; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+</style>
+
+
+
+
+
+<div class="containerup">
+	<a href= "/dashboard"  class="buttonlp">Dashboard</a></th>
+	<h4>Update Solution</h4>
+	
+	
+	<form class="qupp" action="/edit/{{qna.sno}}" method="POST" enctype="multipart/form-data">
+		<label for="name">Name</label><br>
+		<input type="text" id="name" name="name" placeholder="Name" required data-validation-required-message="Please enter your full name." value="{{qna.name}}"><br>	
+		<label for="question">Question</label>
+		<textarea rows="5" class="form-control" placeholder="Enter your question" name = "question" id="question" required data-validation-required-message="Please ask your question" >{{qna.question}}</textarea>
+        <p>Click on the "Choose File" button to upload Solution image.</p>
+
+		
+		  <input type="file" id="myFile" name="qimage" accept="image/" >{{qna.qimage}}<hr>
+
+
+
+		
+		<label for="question">Solution</label>
+		<textarea rows="5" class="form-control" placeholder="Type Summary of solution" name = "answer" id="answer" required data-validation-required-message="Please ask your question">{{qna.answer}}</textarea>
+
+		
+
+		<p>Click on the "Choose File" button to upload Solution image.</p>
+
+		
+		  <input type="file" id="myFile" name="aimage" accept="image/" > {{qna.aimage}}
+
+		<br><hr><label for="name">Slug</label><br>
+		<input type="text" id="name" name="slug" placeholder="Slug" required data-validation-required-message="Please enter your full name." value={{qna.slug}}><br>	
+		 
+		
+
+		<input type="submit" value="Submit">
+	  </form> 
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

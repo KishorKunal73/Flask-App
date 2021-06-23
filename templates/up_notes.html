@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<style>
+
+.containerup{
+
+	padding-top: 145px;
+	padding-left: 25%;
+	padding-right: 25%;
+	margin-bottom: 20px;
+	
+}
+
+.qupp{
+	margin: auto;
+}
+
+
+
+</style>
+
+
+
+
+
+<div class="containerup">
+	<h4>Please Upload Carefully!</h4>
+	
+	<form class="qupp" action="/" method="POST" enctype="multipart/form-data">
+		<label for="name">Subject</label><br>
+		<input type="text" id="name" name="name" placeholder="Subject name" required data-validation-required-message="Please enter your full name."><br>
+		<label for="name">Topic</label><br>
+		<input type="text" id="name" name="name" placeholder="Topic name" required data-validation-required-message="Please enter your full name."><br>	
+		
+		
+		<label for="question">Notes Summary</label>
+		<textarea rows="5" class="form-control" placeholder="Type Notes Summary" name = "question" id="question" required data-validation-required-message="Please ask your question"></textarea>
+
+
+		<p>Click on the "Choose File" button to upload notes file.</p>  
+		<input type="file" id="myFile" name="file" accept="image/" multiple>
+		<hr>
+		
+		
+		 
+		
+
+		<input type="submit" value="Submit">
+	  </form> 
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

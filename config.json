@@ -1,0 +1,19 @@
+{
+	"params":
+	{
+		"local_server": "True",
+		"local_uri" : "mysql://root:@localhost/ask_academy",
+		"prod_uri": "mysql://root:@localhost/ask_academy",
+		"fb_url":"https://facebook.com/ask__academy",
+		"tw_url":"https://twitter.com/ask__academy",
+		"ins_url":"https://instagram.com/ask__academy",
+		"gmail-user":"edubaaaz@gmail.com",
+		"gmail-password":"Nepal@12345",
+		"uplod_location":"D://ASK Acadmey//static//uploads",
+		"admin_username":"edubaaz",
+		"admin_password":"nepal12345",
+		"no_of_posts":"10"
+
+	}
+
+}

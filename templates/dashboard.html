@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.leftcolumn {
+  float: left;
+  width: 50%;
+ /* Should be removed. Only for demonstration */
+}
+.rightcolumn {
+  float: left;
+  width: 50%;
+  padding-left: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .leftcolumn, .rightcolumn {
+
+ padding: 0;
+
+  width: 100%;
+  
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 10px;
+  width: 80%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+
+
+.button {
+  background-color: #488c91; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.buttonl {
+  background-color: #b45c41; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+  
+.buttonh {
+  background-color: #3268ad; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.buttond {
+  background-color: #b45645; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+</style>
+
+
+
+</head>
+
+
+
+
+<body>
+
+<h2 style="text-align:center;">Welcome To Dashboard</h2>
+<button class="buttonl" onclick="document.location='/logout'" >Log Out </button>
+
+<div class="row">
+  <div class="leftcolumn" style="background-color:#aaa;">
+    <h2  style="text-align:center;">QnA Section</h2>
+	<button class="buttonh" style="margin-left:35%;" onclick="document.location='/up_qna'" >Upload New QnA </button>
+
+	<table style="margin-top:5%;">
+		<thead>
+			<tr>
+			<th>Sno</th>
+			<th>Name</th>
+			<th>Edit</th>
+			<th>Delete</th>
+			</tr>
+		  
+		</thead>
+		<tbody>
+			
+			{% for qna in qnas %}
+		  <tr>
+			<td>{{qna.sno}}</td>
+			<td>{{qna.name}}</td>
+			<th><a href= "/edit/{{qna.sno}}"  class="button">Edit</a></th>
+			<th><a href= "/delete/{{qna.sno}}"   class="buttond">Delete</a></th>
+		  </tr>
+		  {% endfor %}
+		  
+		  
+		  
+		</tbody>
+	  </table>
+
+
+
+  </div>
+  <div class="rightcolumn" style="background-color:#bbb;">
+    <h2 style="text-align:center;">Notes Section</h2>
+	<button class="buttonh" style="margin-left:35%;" onclick="document.location='/up_notes'" >Upload New Notes</button>
+	<table style="margin-top:5%;">
+		<thead>
+		  <tr>
+			<th>Sno</th>
+			<th>Subject</th>
+			<th>Topic</th>
+			<th>Date</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		  </tr>
+		</thead>
+		<tbody>
+		    <tr>
+				<td data-column="First Name">uoi</td>
+				<td data-column="Last Name">pp</td>
+				<td data-column="Job Title">koko</td>
+				<td data-column="Twitter">@james</td>
+				<th><a href= "" class="button">Edit</a></th>
+			    <th><a href= ""  class="buttond">Delete</a></th>
+		    </tr>
+		</tbody>
+  </div>
+  
+</div>
+
+</body>
+</html>
+
+
